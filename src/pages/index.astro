@@ -49,3 +49,28 @@ import ShareNav from "../server/components/share-nav.astro";
     </section>
   </div>
 </Layout>
+
+<script>
+// This code is basically a very brief version of the Extensible Frontends 'runtime' module.
+// It fetches the JS and CSS for the pro-stocks-widget component and loads them onto the page, using
+// the 'init' and 'mount' functions exposed by the component.
+//
+// See https://github.com/egargan-ft/ef-runtime/blob/main/packages/ef-runtime-client/src/EFRuntime/EFRuntime.ts
+  const stocksWidgetJsUrl = "https://pro-stocks-widget-staging.ft.com/js";
+  const stocksWidgetCssUrl = "https://pro-stocks-widget-staging.ft.com/css";
+
+  const componentScript = document.createElement("script");
+  componentScript.type = "module";
+  componentScript.innerHTML = `
+import * as component from "${stocksWidgetJsUrl}";
+if (component.init) component.init();
+if (component.mount) component.mount();
+`;
+
+  document.body.append(componentScript);
+
+  const componentCss = document.createElement("link");
+  componentCss.rel = "stylesheet";
+  componentCss.href = stocksWidgetCssUrl;
+  document.head.append(componentCss);
+</script>

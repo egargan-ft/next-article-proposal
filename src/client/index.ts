@@ -87,7 +87,7 @@ onDomReady.then(() => {
   articleRhrEl.cmd ??= [];
 
   // We can enqueue RHR commands before the RHR has been initialised
-  insertProWidget(articleRhrEl, "middle");
+  // insertProWidget(articleRhrEl, "middle");
 
   initRhrInstances();
 
@@ -97,5 +97,5 @@ onDomReady.then(() => {
   );
 
   // Commands can be run post-initialisation too
-  setTimeout(() => insertProWidget(articleRhrEl, "bottom"), 5000);
+  // setTimeout(() => insertProWidget(articleRhrEl, "bottom"), 5000);
 });
